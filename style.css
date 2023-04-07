@@ -1,0 +1,148 @@
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url("https://cdn4.iconfinder.com/data/icons/navigation-48px/48/Untitled-2-24-512.png");
+  background-size: cover;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.nav-link {
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.team-carousel {
+  position: relative;
+  margin: 50px auto;
+  width: 90%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-member {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.team-member.active {
+  opacity: 1;
+}
+
+.team-member-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.team-member-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.team-member-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.team-member-info p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.team-member-info a {
+  display: inline-block;
+  background-color: #333333;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member-info a:hover {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-nav button {
+  border: none;
+  background-color: transparent;
+  font-size: 48px;
+  color: #333333;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-nav button:hover {
+  color: #ffffff;
+}
+
+.prev {
+  transform: rotate(180deg);
+}
