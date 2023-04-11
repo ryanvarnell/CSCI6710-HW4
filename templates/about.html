@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="{{ url_for('static',     filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/about.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
   </head>
@@ -88,6 +89,37 @@
           <button class="next">&#10095;</button>
         </div>
       </section>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h5>Website Made With</h5>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Flask</li>
+                <li>Bootstrap</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5>Joke of the Day</h5>
+              <p>Why do programmers always mix up Christmas and Halloween? Because Oct 31 == Dec 25!</p>
+            </div>
+            <div class="col-md-4">
+              <h5>Music We Love</h5>
+              <ul>
+                <li><a href="https://open.spotify.com/artist/4tZwfgrHOc3mvqYlEYSvVi" target="_blank">Daft Punk</a></li>
+                <li><a href="https://open.spotify.com/artist/2pAWfrd7WFF3XhVt9GooDL" target="_blank">MF DOOM</a></li>
+                <li><a href="https://open.spotify.com/artist/5o206eFLx38glA2bb4zqIU" target="_blank">Del the Funky Homosapien</a></li>
+                <!-- Add more artists here -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
     </main>
 
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>

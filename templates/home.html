@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>The Clothing Carousel</title>
-    <link rel="stylesheet" href="{{ url_for('static',     filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/home.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 
   </head>
   <body>
@@ -58,36 +59,55 @@
           <li>Easy returns and exchanges</li>
           <li>Secure payment options</li>
         </ul>
-      </section>
+      </div>
+    </section>
 
       <section class="products">
-        <h2>Shop Our Collection</h2>
-        <div class="product-grid">
-          <div class="product">
-            <img src="https://via.placeholder.com/300x400" alt="Clothing item">
-            <h3>Product Name</h3>
-            <p>$XX.XX</p>
+        <div class="container">
+          <h2>Shop Our Collection</h2>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card">
+                <img src="https://via.placeholder.com/300x400" alt="Clothing item" class="card-img-top">
+                <div class="card-body">
+                  <h3>Product Name</h3>
+                  <p>$XX.XX</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <img src="https://via.placeholder.com/300x400" alt="Clothing item" class="card-img-top">
+                <div class="card-body">
+                  <h3>Product Name</h3>
+                  <p>$XX.XX</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <img src="https://via.placeholder.com/300x400" alt="Clothing item" class="card-img-top">
+                <div class="card-body">
+                  <h3>Product Name</h3>
+                  <p>$XX.XX</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <img src="https://via.placeholder.com/300x400" alt="Clothing item" class="card-img-top">
+                <div class="card-body">
+                  <h3>Product Name</h3>
+                  <p>$XX.XX</p>
+                </div>
+              </div>
+            </div>
+            <!-- (Add other product cards with col-md-3) -->
           </div>
-          <div class="product">
-            <img src="https://via.placeholder.com/300x400" alt="Clothing item">
-            <h3>Product Name</h3>
-            <p>$XX.XX</p>
-          </div>
-          <div class="product">
-            <img src="https://via.placeholder.com/300x400" alt="Clothing item">
-            <h3>Product Name</h3>
-            <p>$XX.XX</p>
-          </div>
-          <div class="product">
-            <img src="https://via.placeholder.com/300x400" alt="Clothing item">
-            <h3>Product Name</h3>
-            <p>$XX.XX</p>
-          </div>
-        </div>
-        <button class="cta">View All Products</button>
       </section>
 
       <section class="community">
+        <div class="container">
         <h2>Join Our Community</h2>
         <div class="row">
           <div class="col-md-4 mb-4">
@@ -141,6 +161,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
       </div>
       </section>
