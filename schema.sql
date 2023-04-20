@@ -9,7 +9,6 @@ CREATE TABLE user (
 
 CREATE TABLE item (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    
     name TEXT,
     link TEXT,
     image TEXT NOT NULL
