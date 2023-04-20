@@ -24,3 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.addEventListener('click', () => updateIndex(1));
   });
   
+
+  // Get the View Resume link for each programmer slide
+var resume1 = document.getElementById("resume1");
+var resume2 = document.getElementById("resume2");
+var resume3 = document.getElementById("resume3");
+
+// Add an event listener to download the correct resume when the link is clicked
+resume1.addEventListener("click", function() {
+  window.location.href = "{{ url_for('static', filename='img/about/resumes/Resume_Cris.pdf') }}";
+});
+
+resume2.addEventListener("click", function() {
+  window.location.href = "{{ url_for('static', filename='img/about/resumes/Resume_John.pdf') }}";
+});
+
+resume3.addEventListener("click", function() {
+  window.location.href = "{{ url_for('static', filename='img/about/resumes/Resume_Evan.pdf') }}";
+});
