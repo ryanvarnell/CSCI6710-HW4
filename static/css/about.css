@@ -1,124 +1,134 @@
- 
- /* Header */
- header {
-    background-color: #fff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-  }
-  
-  .navbar-brand {
-    font-weight: bold;
-  }
-  
-  .navbar-nav .nav-link {
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  .current .nav-link {
-    color: #f16522;
-  }
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
 
-  /* Programmer Carousel */
-  .team-carousel {
-    position: relative;
-    width: 90%;
-    max-width: 1200px;
-    height: 400px;
-    margin: 50px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-    
-  .team-member {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .team-member.active {
-    opacity: 1;
-  }
-  
-  .team-member-img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
-  }
-  
-  .team-member-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .team-member-info {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .team-member-info h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .team-member-info p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .team-member-info a {
-    display: inline-block;
-    background-color: #333333;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .team-member-info a:hover {
-    background-color: #ffffff;
-    color: #333333;
-  }
-  
-  .carousel-nav {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .prev,
-  .next {
-    border: none;
-    background: none;
-    font-size: 24px;
-    margin: 0 20px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .prev {
-    left: -50px;
-  }
-  
-  .next {
-    right: -50px;
-  }
-  
-  
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Header */
+header {
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.current .nav-link {
+  color: #f16522;
+}
+
+/* Programmer Carousel */
+.team-carousel {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  height: 400px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-member {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.team-member.active {
+  opacity: 1;
+}
+
+.team-member-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.team-member-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.team-member-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.team-member-info p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.team-member-info a {
+  display: inline-block;
+  background-color: #333333;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member-info a:hover {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev,
+.next {
+  border: none;
+  background: none;
+  font-size: 24px;
+  margin: 0 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: -50px;
+}
+
+.next {
+  right: -50px;
+}
