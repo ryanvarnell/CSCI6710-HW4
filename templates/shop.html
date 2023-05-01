@@ -42,13 +42,12 @@
     <main>
         <aside>
           <h2>Filters</h2>
-          <form>
+          <form method="POST" action="{{ url_for('shop') }}">
             <label for="category">Category</label>
             <select id="category" name="category">
               <option value="all">All</option>
               <option value="tops">Tops</option>
               <option value="bottoms">Bottoms</option>
-              <option value="accessories">Accessories</option>
             </select>
             <label for="size">Size</label>
             <select id="size" name="size">
@@ -80,10 +79,10 @@
             <h3>Tops</h3>
             <div class="slideshow-container">
               {% for top in tops %}
-              <div class="slide">
-                <img src="{{ top.image }}" alt="{{ top.name }}">
-                <div class="caption">{{ top.name }}</div>
-              </div>
+                <div class="slide">
+                  <img src="{{ top.image }}" alt="{{ top.name }}">
+                  <div class="caption">{{ top.name }} - {{ top.price }} - {{ top.size }} - {{ top.color }}</div>
+                </div>
               {% endfor %}
             </div>
             <a class="prev">&#10094;</a>
@@ -97,7 +96,7 @@
               {% for bottom in bottoms %}
               <div class="slide">
                 <img src="{{ bottom.image }}" alt="{{ bottom.name }}">
-                <div class="caption">{{ bottom.name }}</div>
+                <div class="caption">{{ bottom.name }} - {{ bottom.price }} - {{ bottom.size }} - {{ bottom.color }}</div>
               </div>
               {% endfor %}
             </div>
@@ -105,10 +104,6 @@
             <a class="next">&#10095;</a>
             <div class="pause">&#10074;&#10074;</div>
           </div>
-          
-
-          
-          
           <div class="outfit">
             <h3>Create Your Outfit</h3>
             <form>
@@ -144,7 +139,6 @@
         event.preventDefault();
         const top = document.querySelector('#top').value;
         const bottom = document.querySelector('#bottom').value;
-        const accessory = document.querySelector('#accessory').value;
         outfitImage.src = `tops/${top}.jpg+bottoms/${bottom}.jpg+accessories/${accessory}.jpg`;
       });
     </script>

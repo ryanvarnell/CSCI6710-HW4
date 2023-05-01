@@ -34,7 +34,7 @@ colors = {
 # Read and insert the images
 for i in range(1, 5):
     # Set the file path and open the file as binary
-    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/clothing photos/dress{i}.png"
+    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/static/clothing photos/dress{i}.png"
     with open(file_path, 'rb') as file:
         blob_data = file.read()
 
@@ -50,7 +50,7 @@ for i in range(1, 5):
 
 for i in range(1, 6):
     # Set the file path and open the file as binary
-    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/clothing photos/mpant{i}.png"
+    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/static/clothing photos/mpant{i}.png"
     with open(file_path, 'rb') as file:
         blob_data = file.read()
 
@@ -66,7 +66,7 @@ for i in range(1, 6):
 
 for i in range(1, 6):
     # Set the file path and open the file as binary
-    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/clothing photos/mshirt{i}.png"
+    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/static/clothing photos/mshirt{i}.png"
     with open(file_path, 'rb') as file:
         blob_data = file.read()
 
@@ -82,7 +82,7 @@ for i in range(1, 6):
 
 for i in range(1, 4):
     # Set the file path and open the file as binary
-    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/clothing photos/wpant{i}.png"
+    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/static/clothing photos/wpant{i}.png"
     with open(file_path, 'rb') as file:
         blob_data = file.read()
 
@@ -98,7 +98,7 @@ for i in range(1, 4):
 
 for i in range(1, 4):
     # Set the file path and open the file as binary
-    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/clothing photos/wshirt{i}.png"
+    file_path = f"C:/Users/cris/Documents/ECU Classes/CSCI 6710 Developing E-Commerce Systems/HW4/static/clothing photos/wshirt{i}.png"
     with open(file_path, 'rb') as file:
         blob_data = file.read()
 

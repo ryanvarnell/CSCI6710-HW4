@@ -33,10 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Get selected values from form
   const top = document.querySelector('#top').value;
   const bottom = document.querySelector('#bottom').value;
-  const accessory = document.querySelector('#accessory').value;
   
   // Set outfit preview image source
-  outfitPreview.src = `path/to/${top}_${bottom}_${accessory}.jpg`;
+  outfitPreview.src = `path/to/${top}_${bottom}.jpg`;
   
   });
   
@@ -118,7 +117,4 @@ document.addEventListener('DOMContentLoaded', () => {
       featuredProducts.appendChild(productCard);
     });
   });
-  
-  });
-  
-  // Shuffle the array using the Fisher-Yates algorithm function
+});
