@@ -1,50 +1,78 @@
-from flask import Flask, render_template, g, current_app, url_for, request
+from flask import Flask, render_template, g, current_app, url_for, request, jsonify
 import sqlite3
 import base64
 
+DATABASE = 'styles.db'
 app = Flask(__name__)
 
-@app.template_filter('b64encode')
-def b64encode(text):
-    return base64.b64encode(text).decode('utf-8')
 
-@app.route("/")
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+    return db
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+
+
+@app.route("/home")
 def home():
+    conn = get_db()
+    cursor = conn.cursor()
+    # Rest of the code
     return render_template("home.html")
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-@app.route('/shop', methods=['GET', 'POST'])
+# get images for tops and bottom slideshows
+def get_tops_and_bottoms():
+    conn = sqlite3.connect('styles.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM clothing WHERE type='top'")
+    tops = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM clothing WHERE type='bottom'")
+    bottoms = cursor.fetchall()
+
+    conn.close()
+    return tops, bottoms
+
+# populate shop.html with top and bottom photos
+@app.route('/shop')
 def shop():
-    category = request.form.get('category', 'all')
-    size = request.form.get('size', 'all')
-    color = request.form.get('color', 'all')
+    tops, bottoms = get_tops_and_bottoms()
+    types, sizes, prices, colors = fetch_filter_data()
+    return render_template('shop.html', tops=tops, bottoms=bottoms, types=types, sizes=sizes, prices=prices, colors=colors)
 
-    query = 'SELECT * FROM clothing WHERE 1'
-    query_params = []
+# get filters from database
+def fetch_filter_data():
+    conn = sqlite3.connect('styles.db')
+    c = conn.cursor()
 
-    if category != 'all':
-        query += ' AND type = ?'
-        query_params.append(category)
+    c.execute("SELECT DISTINCT type FROM clothing")
+    types = [row[0] for row in c.fetchall()]
 
-    if size != 'all':
-        query += ' AND size = ?'
-        query_params.append(size)
+    c.execute("SELECT DISTINCT size FROM clothing")
+    sizes = [row[0] for row in c.fetchall()]
 
-    if color != 'all':
-        query += ' AND color = ?'
-        query_params.append(color)
+    c.execute("SELECT DISTINCT price FROM clothing")
+    prices = [row[0] for row in c.fetchall()]
 
-    conn = get_db_connection()
-    items = conn.execute(query, query_params).fetchall()
+    c.execute("SELECT DISTINCT color FROM clothing")
+    colors = [row[0] for row in c.fetchall()]
+
     conn.close()
 
-    tops = [item for item in items if item['type'] == 'top']
-    bottoms = [item for item in items if item['type'] == 'bottom']
+    return types, sizes, prices, colors
 
-    return render_template('shop.html', tops=tops, bottoms=bottoms)
+
 
 @app.route("/community")
 def community():
@@ -64,8 +92,6 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-

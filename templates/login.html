@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>The Clothing Carousel</title>
-    <link rel="stylesheet" href="{{ url_for('static',     filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/login.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
     <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 
@@ -41,7 +41,18 @@
       </nav>
   </header>
     <main>
-        
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" size="20">
+
+            <label for="password">Password: </label>
+            <input type="text" id="password" name="password" minlength="5" size="20" placeholder="More than 5 characters">
+        </div>
+        <div>
+            <button>Login</button>
+            <button>Register</button>
+        </div>
+
     </main>
 </body>
 </html>
