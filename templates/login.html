@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',     filename='css/login.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
     <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',   filename='img/carousel-horse.png') }}">
 
   </head>
   <body>
@@ -40,19 +41,41 @@
           </div>
       </nav>
   </header>
+
     <main>
-        <div>
-            <label for="username">Username: </label>
-            <input type="text" id="username" name="username" size="20">
-
-            <label for="password">Password: </label>
-            <input type="text" id="password" name="password" minlength="5" size="20" placeholder="More than 5 characters">
-        </div>
-        <div>
-            <button>Login</button>
-            <button>Register</button>
-        </div>
-
+        <h1><br><br><br></h1>
+        <section class="input">
+            <form method="POST" action="{{ url_for('login') }}">
+                <div>
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" size="20">
+            
+                    <label for="password">Password: </label>
+                    <input type="text" id="password" name="password" minlength="5" size="20" placeholder="More than 5 characters">
+                </div>
+                <div>
+                    <button class="login" onclick="login()">Login</button>
+                </div>
+            </form>
+            
+            <form method="POST" action="{{ url_for('register') }}">
+                <div>
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" size="20">
+            
+                    <label for="password">Password: </label>
+                    <input type="text" id="password" name="password" minlength="5" size="20" placeholder="More than 5 characters">
+                </div>
+                <div>
+                    <button class="register" onclick="register()">Register</button>
+                </div>
+            </form>
+            
+            
+        </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 </html>

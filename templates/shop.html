@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',     filename='css/carousel.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    
 </head>
 <body>
     <header>
@@ -40,12 +41,13 @@
         </nav>
     </header>
     <main>
+      <h1><br><br></h1>
       <aside>
         <h2>Filters</h2>
         <form id="filter-form">
           <!-- For type -->
           <select id="type" name="type">
-            <option value="all">All</option>
+            <option value="all">Type</option>
             {% for type in types %}
             <option value="{{ type }}">{{ type }}</option>
             {% endfor %}
@@ -53,7 +55,7 @@
 
           <!-- For size -->
           <select id="size" name="size">
-            <option value="all">All</option>
+            <option value="all">Size</option>
             {% for size in sizes %}
             <option value="{{ size }}">{{ size }}</option>
             {% endfor %}
@@ -61,7 +63,7 @@
 
           <!-- For price -->
           <select id="price" name="price">
-            <option value="all">All</option>
+            <option value="all">Price</option>
             {% for price in prices %}
             <option value="{{ price }}">{{ price }}</option>
             {% endfor %}
@@ -69,7 +71,7 @@
 
           <!-- For color -->
           <select id="color" name="color">
-            <option value="all">All</option>
+            <option value="all">Color</option>
             {% for color in colors %}
             <option value="{{ color }}">{{ color }}</option>
             {% endfor %}
@@ -80,36 +82,36 @@
       </aside>
 
         <section class="products">
-          <!-- Top Slideshow -->
-          <div class="slideshow">
-            <h3>Tops</h3>
-            <div class="slideshow-container tops">
-              {% for top in tops %}
-              <div class="slide">
-                <img src="{{ url_for('static', filename='img/' + top[1]) }}" alt="{{ top[2] }}">
-                <div class="caption">{{ top[2] }} - {{ top[3] }} - {{ top[4] }} - {{ top[5] }}</div>
-              </div>
-              {% endfor %}
-            </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-            <div class="pause">&#10074;&#10074;</div>
-          </div>
-          <!-- Bottom Slideshow -->
-          <div class="slideshow">
-            <h3>Bottoms</h3>
-            <div class="slideshow-container bottoms">
-              {% for bottom in bottoms %}
-              <div class="slide">
+  <!-- Top Slideshow -->
+  <div class="slideshow">
+    <h3>Tops</h3>
+    <div class="slideshow-container tops">
+      {% for top in tops %}
+      <div class="slide">
+                <img src="{{ url_for('static', filename='img/' + top[6]) }}" alt="{{ top[2] }}">
+        <div class="caption">{{ top[2] }} - {{ top[3] }} - {{ top[4] }} - {{ top[5] }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+    <div class="pause">&#10074;&#10074;</div>
+  </div>
+  <!-- Bottom Slideshow -->
+  <div class="slideshow">
+    <h3>Bottoms</h3>
+    <div class="slideshow-container bottoms">
+      {% for bottom in bottoms %}
+      <div class="slide">
                 <img src="{{ url_for('static', filename='img/' + bottom[1]) }}" alt="{{ bottom[2] }}">
-                <div class="caption">{{ bottom[2] }} - {{ bottom[3] }} - {{ bottom[4] }} - {{ bottom[5] }}</div>
-              </div>
-              {% endfor %}
-            </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-            <div class="pause">&#10074;&#10074;</div>
-          </div>
+        <div class="caption">{{ bottom[2] }} - {{ bottom[3] }} - {{ bottom[4] }} - {{ bottom[5] }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+    <div class="pause">&#10074;&#10074;</div>
+  </div>
         
           <div class="outfit">
             <h3>Create Your Outfit</h3>

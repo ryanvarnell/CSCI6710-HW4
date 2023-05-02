@@ -73,7 +73,48 @@ filterSubmitButton.addEventListener('click', (event) => {
   });
 });
 
+function register() {
+  var username = $('#username').val();
+  var password = $('#password').val();
 
+  if (username === '' || password === '') {
+    alert('Please fill in both fields.');
+  } else {
+    $.ajax({
+      type: 'POST',
+      url: '{{ url_for(templates,     filename=/login.html) }}',
+      data: {'username': username, 'password': password},
+      success: function(data) {
+        window.location.href = '{{ url_for(templates,     filename=/login.html) }}';
+      },
+      error: function(xhr, status, error) {
+        alert(xhr.responseText);
+      }
+    });
+  }
+}
+
+function login() {
+  var username = $('#username').val();
+    var password = $('#password').val();
+
+    if (username === '' || password === '') {
+      alert('Please fill in both fields.');
+    } else {
+      $.ajax({
+        type: 'POST',
+        url: '{{ url_for(templates,     filename=/login.html) }}',
+        data: {'username': username, 'password': password},
+        success: function(data) {
+          if (data === 'success') {
+            window.location.href = '{{ url_for(templates,     filename=/user.html) }}';
+          } else {
+            alert('Incorrect username or password.');
+          }
+        }
+      });
+    }
+}
 
     
   // Function to shuffle the array in-place

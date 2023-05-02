@@ -38,6 +38,19 @@ body {
 
   /* Login section */
 
+  .input {
+    height: 80vh;
+    position: relative;
+  }
+
+  button {
+    text-align: center;
+    padding: 12px 25px;
+    font-size: 12px;
+    border-radius: 8px;
+
+  }
+
   div {
     margin-bottom: 15px;
     position: relative;

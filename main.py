@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g, current_app, url_for, request, jsonify
+from flask import Flask, render_template, redirect, g, current_app, url_for, request, jsonify
 import sqlite3
 import base64
 
@@ -19,7 +19,7 @@ def close_connection(exception):
         db.close()
 
 
-@app.route("/home")
+@app.route("/")
 def home():
     conn = get_db()
     cursor = conn.cursor()
@@ -30,24 +30,86 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
+        user = cursor.fetchone()
+        conn.close()
+        if user:
+            return "Login successful"
+        else:
+            return "Invalid username or password"
+    else:
+        return render_template('login.html')
+
+
+@app.route('/register', methods=['POST'])
+def register():
+    username = request.form['username']
+    password = request.form['password']
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE username=?", (username,))
+    existing_user = cursor.fetchone()
+    if existing_user:
+        return "Username already taken"
+    else:
+        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+        conn.commit()
+        conn.close()
+        return "Registration successful"
+
+
 # get images for tops and bottom slideshows
-def get_tops_and_bottoms():
+def get_tops_and_bottoms(type_filter, size_filter, price_filter, color_filter):
     conn = sqlite3.connect('styles.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM clothing WHERE type='top'")
-    tops = cursor.fetchall()
+    query = "SELECT * FROM clothing WHERE 1=1"
+    if type_filter != 'all':
+        query += f" AND type='{type_filter}'"
+    if size_filter != 'all':
+        query += f" AND size='{size_filter}'"
+    if price_filter != 'all':
+        query += f" AND price='{price_filter}'"
+    if color_filter != 'all':
+        query += f" AND color='{color_filter}'"
 
-    cursor.execute("SELECT * FROM clothing WHERE type='bottom'")
-    bottoms = cursor.fetchall()
+    cursor.execute(query)
+    rows = cursor.fetchall()
+
+    tops = []
+    bottoms = []
+    for row in rows:
+        image_data = row[6]
+        if row[2] == 'top':
+            tops.append((row[0], row[1], row[2], row[3], row[4], row[5], base64.b64encode(image_data).decode('utf-8')))
+        else:
+            bottoms.append((row[0], row[1], row[2], row[3], row[4], row[5], base64.b64encode(image_data).decode('utf-8')))
 
     conn.close()
     return tops, bottoms
 
 # populate shop.html with top and bottom photos
-@app.route('/shop')
+@app.route('/shop', methods=['GET', 'POST'])
 def shop():
-    tops, bottoms = get_tops_and_bottoms()
+    if request.method == 'POST':
+        type_filter = request.form['type']
+        size_filter = request.form['size']
+        price_filter = request.form['price']
+        color_filter = request.form['color']
+    else:
+        type_filter = 'all'
+        size_filter = 'all'
+        price_filter = 'all'
+        color_filter = 'all'
+
+    tops, bottoms = get_tops_and_bottoms(type_filter, size_filter, price_filter, color_filter)
     types, sizes, prices, colors = fetch_filter_data()
     return render_template('shop.html', tops=tops, bottoms=bottoms, types=types, sizes=sizes, prices=prices, colors=colors)
 
@@ -82,15 +144,26 @@ def community():
 def user():
     return render_template("user.html")
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
 
 def get_db_connection():
     conn = sqlite3.connect('styles.db')
     conn.row_factory = sqlite3.Row
     return conn
+
+@app.template_filter()
+def b64encode(data):
+    return base64.b64encode(data).decode('utf-8')
+
+
+# Register the user
+
+def registerUser(username, password):
+    print("User: {}. Password: {}.".format(username, password))
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    statement = f"INSERT INTO users (username,password) VALUES ('{username}','{password}')"
+    cursor.execute(statement)
+    conn.commit()
 
 
 if __name__ == "__main__":
