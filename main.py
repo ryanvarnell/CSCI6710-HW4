@@ -32,6 +32,7 @@ def about():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    check = "Failed to login"
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -41,15 +42,18 @@ def login():
         user = cursor.fetchone()
         conn.close()
         if user:
-            return "Login successful"
+            check = "Login successful, Welcome {}".format(username)
+            return render_template('user.html', Check=check)
         else:
-            return "Invalid username or password"
+            check = "Invalid username or password"
+            return render_template('login.html', Check=check)
     else:
-        return render_template('login.html')
+        return render_template('login.html', Check=check)
 
 
-@app.route('/register', methods=['POST'])
+@app.route('/user', methods=['POST'])
 def register():
+    check = ""
     username = request.form['username']
     password = request.form['password']
     conn = sqlite3.connect('users.db')
@@ -57,13 +61,14 @@ def register():
     cursor.execute("SELECT * FROM users WHERE username=?", (username,))
     existing_user = cursor.fetchone()
     if existing_user:
-        return "Username already taken"
+        check = "Username already taken"
+        return render_template('login.html', Check=check)
     else:
         cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
         conn.commit()
         conn.close()
-        return "Registration successful"
-
+        check = "Registration successful, Welcome {}".format(username)
+        return render_template('user.html', Check=check)
 
 # get images for tops and bottom slideshows
 def get_tops_and_bottoms(type_filter, size_filter, price_filter, color_filter):
