@@ -7,41 +7,48 @@
     <link rel="stylesheet" href="{{ url_for('static',     filename='css/carousel.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',   filename='img/carousel-horse.png') }}">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">The Clothing Carousel</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item ">
-                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
-                    </li>
-                    <li class="nav-item current">
-                        <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('user') }}">My Outfits</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('community') }}">Community</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('login') }}">Login and Register</a>
-                  </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The Clothing Carousel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item current">
+                    <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
+                </li>
+                {% if 'username' not in session %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login and Register</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('user') }}">{{ session['username'] }}'s Outfits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('community') }}">Community</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
     <main>
-      <h1><br><br></h1>
+      <h1></h1>
       <aside>
         <h2>Filters</h2>
         <form id="filter-form">
@@ -82,50 +89,50 @@
       </aside>
 
         <section class="products">
-  <!-- Top Slideshow -->
-  <div class="slideshow">
-    <h3>Tops</h3>
-    <div class="slideshow-container tops">
-      {% for top in tops %}
-      <div class="slide">
-                <img src="{{ url_for('static', filename='img/' + top[6]) }}" alt="{{ top[2] }}">
-        <div class="caption">{{ top[2] }} - {{ top[3] }} - {{ top[4] }} - {{ top[5] }}</div>
-      </div>
-      {% endfor %}
-    </div>
-    <a class="prev">&#10094;</a>
-    <a class="next">&#10095;</a>
-    <div class="pause">&#10074;&#10074;</div>
-  </div>
-  <!-- Bottom Slideshow -->
-  <div class="slideshow">
-    <h3>Bottoms</h3>
-    <div class="slideshow-container bottoms">
-      {% for bottom in bottoms %}
-      <div class="slide">
-                <img src="{{ url_for('static', filename='img/' + bottom[1]) }}" alt="{{ bottom[2] }}">
-        <div class="caption">{{ bottom[2] }} - {{ bottom[3] }} - {{ bottom[4] }} - {{ bottom[5] }}</div>
-      </div>
-      {% endfor %}
-    </div>
-    <a class="prev">&#10094;</a>
-    <a class="next">&#10095;</a>
-    <div class="pause">&#10074;&#10074;</div>
-  </div>
-        
+          <!-- Top Slideshow -->
+          <div class="slideshow">
+            <h3>Tops</h3>
+            <div class="slideshow-container tops">
+              {% for top in tops %}
+              <div class="slide" data-type="{{ top[3] }}" data-size="{{ top[4] }}" data-price="{{ top[5] }}" data-color="{{ top[6] }}">
+                <img src="data:image/jpeg;base64,{{ top[6] }}" alt="{{ top[2] }}">
+                <div class="caption">{{ top[2] }} - {{ top[3] }} - {{ top[4] }} - {{ top[5] }}</div>
+              </div>
+              {% endfor %}
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+
+          </div>
+          <!-- Bottom Slideshow -->
+          <div class="slideshow">
+            <h3>Bottoms</h3>
+            <div class="slideshow-container bottoms">
+              {% for bottom in bottoms %}
+              <div class="slide">
+                <img src="data:image/jpeg;base64,{{ bottom[6] }}" alt="{{ bottom[2] }}">
+                <div class="caption">{{ bottom[2] }} - {{ bottom[3] }} - {{ bottom[4] }} - {{ bottom[5] }}</div>
+              </div>
+              {% endfor %}
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+
+          </div>
+                
           <div class="outfit">
             <h3>Create Your Outfit</h3>
             <form>
               <label for="top">Choose a top:</label>
               <select id="top" name="top">
                 {% for top in tops %}
-                <option value="{{ top.id }}">{{ top.name }}</option>
+                <option value="{{ top[0] }}">{{ top[1] }}</option>
                 {% endfor %}
               </select>
               <label for="bottom">Choose a bottom:</label>
               <select id="bottom" name="bottom">
                 {% for bottom in bottoms %}
-                <option value="{{ bottom.id }}">{{ bottom.name }}</option>
+                <option value="{{ bottom[0] }}">{{ bottom[1] }}</option>
                 {% endfor %}
               </select>
               <button type="submit">Create Outfit</button>
@@ -136,23 +143,13 @@
             </div>
             <button class="share-button">Share Outfit</button>
           </div>
-        </section>
+  
         
       </main>
       <!-- JavaScript dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-    <script>
-      const form = document.querySelector('form');
-      const outfitImage = document.querySelector('#outfit-image');
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const top = document.querySelector('#top').value;
-        const bottom = document.querySelector('#bottom').value;
-        outfitImage.src = `tops/${top}.png+bottoms/${bottom}.png`;
-      });
-    </script>
     <script>
       let slideIndex = {};
       const slideshows = document.getElementsByClassName('slideshow');
@@ -170,15 +167,6 @@
           slideIndex[i]++;
           showSlides(i, slideIndex[i]);
         });
-    
-        slideshows[i].querySelector('.pause').addEventListener('click', () => {
-          const slides = slideshows[i].getElementsByClassName('slide');
-          if (slides[slideIndex[i] - 1].style.display === 'none') {
-            slides[slideIndex[i] - 1].style.display = 'block';
-          } else {
-            slides[slideIndex[i] - 1].style.display = 'none';
-          }
-        });
       }
     
       function showSlides(slideshowIndex, n) {
@@ -193,6 +181,99 @@
         }
     
         slides[slideIndex[slideshowIndex] - 1].style.display = 'block';
+      }
+    </script>
+    <script>
+      // Add event listeners to filter buttons and 'Create Outfit' button
+      $(document).ready(function() {
+        $("#filter-submit").on("click", function(e) {
+          e.preventDefault();
+          updateSlideshows();
+        });
+  
+        $("form").on("submit", function(e) {
+          e.preventDefault();
+          createOutfit();
+        });
+      });
+  
+      // Function to update slideshows based on filters
+      function updateSlideshows() {
+        const filterData = {
+          type: $("#type").val(),
+          size: $("#size").val(),
+          price: $("#price").val(),
+          color: $("#color").val()
+        };
+  
+        $.ajax({
+          url: "/filter_images", // Your server-side endpoint
+          type: "POST",
+          data: JSON.stringify(filterData),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(response) {
+            // Update the slideshows with the new images
+            // based on the response from the server
+            updateTopSlideshow(response.tops);
+            updateBottomSlideshow(response.bottoms);
+          }
+        });
+      }
+  
+      function updateTopSlideshow(tops) {
+         // Clear the current slides
+        $(".slideshow-container.tops").empty();
+
+        // Add the new slides
+        for (const top of tops) {
+          const slide = `
+            <div class="slide" data-type="${top[3]}" data-size="${top[4]}" data-price="${top[5]}" data-color="${top[6]}">
+              <img src="data:image/jpeg;base64,${top[6]}" alt="${top[2]}">
+              <div class="caption">${top[2]} - ${top[3]} - ${top[4]} - ${top[5]}</div>
+            </div>
+          `;
+          $(".slideshow-container.tops").append(slide);
+        }
+      }
+  
+      function updateBottomSlideshow(bottoms) {
+        // Clear the current slides
+        $(".slideshow-container.bottoms").empty();
+
+        // Add the new slides
+        for (const bottom of bottoms) {
+          const slide = `
+            <div class="slide" data-type="${bottom[3]}" data-size="${bottom[4]}" data-price="${bottom[5]}" data-color="${bottom[6]}">
+              <img src="data:image/jpeg;base64,${bottom[6]}" alt="${bottom[2]}">
+              <div class="caption">${bottom[2]} - ${bottom[3]} - ${bottom[4]} - ${bottom[5]}</div>
+            </div>
+          `;
+          $(".slideshow-container.bottoms").append(slide);
+        }
+      }
+  
+      function createOutfit() {
+        const outfitData = {
+          top_id: $("#top").val(),
+          bottom_id: $("#bottom").val(),
+          user_id: "user_id_here" // Replace with the actual user ID
+        };
+  
+        $.ajax({
+          url: "/shop", // Your server-side endpoint
+          type: "POST",
+          data: JSON.stringify(outfitData),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(response) {
+            if (response.status === "success") {
+              alert("Outfit created successfully!");
+            } else {
+              alert("Error creating outfit.");
+            }
+          }
+        });
       }
     </script>
   </body>

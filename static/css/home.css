@@ -43,11 +43,15 @@ body {
   }
   
   .hero-image {
-    background-image: url('https://via.placeholder.com/1200x600');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
   }
   
   .cta {
