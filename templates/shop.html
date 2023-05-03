@@ -1,52 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop</title>
-    <link rel="stylesheet" href="{{ url_for('static',     filename='css/carousel.css') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/carousel.css') }}"
+    />
+    <script
+      defer
+      src="{{ url_for('static', filename='js/scripts.js') }}"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static',   filename='img/carousel-horse.png') }}">
-</head>
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='img/carousel_horse.png') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">The Clothing Carousel</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item ">
-                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
-                </li>
-                <li class="nav-item current">
-                    <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
-                </li>
-                {% if 'username' not in session %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login and Register</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('user') }}">{{ session['username'] }}'s Outfits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('community') }}">Community</a>
-                </li>
-            </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            <li class="nav-item current">
+              <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
+            </li>
+            {% if 'username' not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}"
+                >Login and Register</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('user') }}"
+                >{{ session['username'] }}'s Outfits</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('community') }}"
+                >Community</a
+              >
+            </li>
+          </ul>
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
     <main>
       <h1></h1>
       <aside>
@@ -88,141 +117,172 @@
         </form>
       </aside>
 
-        <section class="products">
-          <!-- Top Slideshow -->
-          <div class="slideshow">
-            <h3>Tops</h3>
-            <div class="slideshow-container tops">
+      <section class="products">
+        <!-- Top Slideshow -->
+        <div class="slideshow">
+          <h3>Tops</h3>
+          <div class="slideshow-container tops">
+            {% for top in tops %}
+            <div
+              class="slide"
+              data-type="{{ top[3] }}"
+              data-size="{{ top[4] }}"
+              data-price="{{ top[5] }}"
+              data-color="{{ top[6] }}"
+            >
+              <img
+                src="data:image/jpeg;base64,{{ top[6] }}"
+                alt="{{ top[2] }}"
+              />
+              <div class="caption">
+                {{ top[2] }} - {{ top[3] }} - {{ top[4] }} - {{ top[5] }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+        </div>
+        <!-- Bottom Slideshow -->
+        <div class="slideshow">
+          <h3>Bottoms</h3>
+          <div class="slideshow-container bottoms">
+            {% for bottom in bottoms %}
+            <div class="slide">
+              <img
+                src="data:image/jpeg;base64,{{ bottom[6] }}"
+                alt="{{ bottom[2] }}"
+              />
+              <div class="caption">
+                {{ bottom[2] }} - {{ bottom[3] }} - {{ bottom[4] }} - {{
+                bottom[5] }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+        </div>
+
+        <div class="outfit">
+          <h3>Create Your Outfit</h3>
+          <form>
+            <label for="top">Choose a top:</label>
+            <select id="top" name="top">
               {% for top in tops %}
-              <div class="slide" data-type="{{ top[3] }}" data-size="{{ top[4] }}" data-price="{{ top[5] }}" data-color="{{ top[6] }}">
-                <img src="data:image/jpeg;base64,{{ top[6] }}" alt="{{ top[2] }}">
-                <div class="caption">{{ top[2] }} - {{ top[3] }} - {{ top[4] }} - {{ top[5] }}</div>
-              </div>
+              <option value="{{ top[0] }}">{{ top[1] }}</option>
               {% endfor %}
-            </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-
-          </div>
-          <!-- Bottom Slideshow -->
-          <div class="slideshow">
-            <h3>Bottoms</h3>
-            <div class="slideshow-container bottoms">
+            </select>
+            <label for="bottom">Choose a bottom:</label>
+            <select id="bottom" name="bottom">
               {% for bottom in bottoms %}
-              <div class="slide">
-                <img src="data:image/jpeg;base64,{{ bottom[6] }}" alt="{{ bottom[2] }}">
-                <div class="caption">{{ bottom[2] }} - {{ bottom[3] }} - {{ bottom[4] }} - {{ bottom[5] }}</div>
-              </div>
+              <option value="{{ bottom[0] }}">{{ bottom[1] }}</option>
               {% endfor %}
-            </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
+            </select>
+            <button type="submit">Create Outfit</button>
+          </form>
+          <div class="outfit-preview">
+            <h4>Outfit Preview</h4>
+            <img id="outfit-image" src="" alt="Outfit Preview" />
+          </div>
+          <button class="share-button">Share Outfit</button>
+        </div>
+      </section>
+    </main>
 
-          </div>
-                
-          <div class="outfit">
-            <h3>Create Your Outfit</h3>
-            <form>
-              <label for="top">Choose a top:</label>
-              <select id="top" name="top">
-                {% for top in tops %}
-                <option value="{{ top[0] }}">{{ top[1] }}</option>
-                {% endfor %}
-              </select>
-              <label for="bottom">Choose a bottom:</label>
-              <select id="bottom" name="bottom">
-                {% for bottom in bottoms %}
-                <option value="{{ bottom[0] }}">{{ bottom[1] }}</option>
-                {% endfor %}
-              </select>
-              <button type="submit">Create Outfit</button>
-            </form>
-            <div class="outfit-preview">
-              <h4>Outfit Preview</h4>
-              <img id="outfit-image" src="" alt="Outfit Preview">
-            </div>
-            <button class="share-button">Share Outfit</button>
-          </div>
-  
-        
-      </main>
-      <!-- JavaScript dependencies -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <!-- JavaScript dependencies -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script>
       let slideIndex = {};
-      const slideshows = document.getElementsByClassName('slideshow');
-    
+      const slideshows = document.getElementsByClassName("slideshow");
+
       for (let i = 0; i < slideshows.length; i++) {
         slideIndex[i] = 1;
         showSlides(i, slideIndex[i]);
-    
-        slideshows[i].querySelector('.prev').addEventListener('click', () => {
+
+        slideshows[i].querySelector(".prev").addEventListener("click", () => {
           slideIndex[i]--;
           showSlides(i, slideIndex[i]);
         });
-    
-        slideshows[i].querySelector('.next').addEventListener('click', () => {
+
+        slideshows[i].querySelector(".next").addEventListener("click", () => {
           slideIndex[i]++;
           showSlides(i, slideIndex[i]);
         });
       }
-    
+
       function showSlides(slideshowIndex, n) {
         const slideshow = slideshows[slideshowIndex];
-        const slides = slideshow.getElementsByClassName('slide');
-    
-        if (n > slides.length) { slideIndex[slideshowIndex] = 1 }
-        if (n < 1) { slideIndex[slideshowIndex] = slides.length }
-    
-        for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = 'none';
+        const slides = slideshow.getElementsByClassName("slide");
+
+        if (n > slides.length) {
+          slideIndex[slideshowIndex] = 1;
         }
-    
-        slides[slideIndex[slideshowIndex] - 1].style.display = 'block';
+        if (n < 1) {
+          slideIndex[slideshowIndex] = slides.length;
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex[slideshowIndex] - 1].style.display = "block";
       }
     </script>
     <script>
       // Add event listeners to filter buttons and 'Create Outfit' button
-      $(document).ready(function() {
-        $("#filter-submit").on("click", function(e) {
+      $(document).ready(function () {
+        $("#filter-submit").on("click", function (e) {
           e.preventDefault();
           updateSlideshows();
         });
-  
-        $("form").on("submit", function(e) {
+
+        $("form").on("submit", function (e) {
           e.preventDefault();
           createOutfit();
         });
       });
-  
+
       // Function to update slideshows based on filters
       function updateSlideshows() {
         const filterData = {
           type: $("#type").val(),
           size: $("#size").val(),
           price: $("#price").val(),
-          color: $("#color").val()
+          color: $("#color").val(),
         };
-  
+
         $.ajax({
           url: "/filter_images", // Your server-side endpoint
           type: "POST",
           data: JSON.stringify(filterData),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
-          success: function(response) {
+          success: function (response) {
             // Update the slideshows with the new images
             // based on the response from the server
             updateTopSlideshow(response.tops);
             updateBottomSlideshow(response.bottoms);
-          }
+          },
         });
       }
-  
+
       function updateTopSlideshow(tops) {
-         // Clear the current slides
+        // Clear the current slides
         $(".slideshow-container.tops").empty();
 
         // Add the new slides
@@ -236,7 +296,7 @@
           $(".slideshow-container.tops").append(slide);
         }
       }
-  
+
       function updateBottomSlideshow(bottoms) {
         // Clear the current slides
         $(".slideshow-container.bottoms").empty();
@@ -252,27 +312,27 @@
           $(".slideshow-container.bottoms").append(slide);
         }
       }
-  
+
       function createOutfit() {
         const outfitData = {
           top_id: $("#top").val(),
           bottom_id: $("#bottom").val(),
-          user_id: "user_id_here" // Replace with the actual user ID
+          user_id: "user_id_here", // Replace with the actual user ID
         };
-  
+
         $.ajax({
           url: "/shop", // Your server-side endpoint
           type: "POST",
           data: JSON.stringify(outfitData),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
-          success: function(response) {
+          success: function (response) {
             if (response.status === "success") {
               alert("Outfit created successfully!");
             } else {
               alert("Error creating outfit.");
             }
-          }
+          },
         });
       }
     </script>

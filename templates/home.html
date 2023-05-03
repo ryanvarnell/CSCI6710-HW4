@@ -2,61 +2,84 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>The Clothing Carousel</title>
-    <link rel="stylesheet" href="{{ url_for('static',     filename='css/home.css') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static',   filename='img/carousel-horse.png') }}">
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='img/carousel_horse.png') }}"
+    />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">The Clothing Carousel</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                  <li class="nav-item ">
-                  <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('about') }}">About</a>
-                  </li>
-                  <li class="nav-item current">
-                      <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
-                  </li>
-                  {% if 'username' not in session %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('login') }}">Login and Register</a>
-                  </li>
-                  {% else %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('user') }}">{{ session['username'] }}'s Outfits</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                  </li>
-                  {% endif %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('community') }}">Community</a>
-                  </li>
-              </ul>
-          </div>
+        <a class="navbar-brand" href="#">The Clothing Carousel</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item current">
+              <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
+            </li>
+            {% if 'username' not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}"
+                >Login and Register</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('user') }}"
+                >{{ session['username'] }}'s Outfits</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('community') }}"
+                >Community</a
+              >
+            </li>
+          </ul>
+        </div>
       </nav>
-  </header>
-  
-  
-  
-    <h1><br><br></h1>
-
+    </header>
     <main>
       <section class="hero">
         <div class="hero-image">
           <img
-            src="{{ url_for('static',   filename='img/ClothingCarouselBanner.png') }}"
+            src="{{ url_for('static', filename='img/clothing_carousel_banner.png') }}"
             alt="Clothing Carousel banner image"
           />
           <button class="cta">Shop Now</button>
@@ -72,165 +95,275 @@
           <li>Easy returns and exchanges</li>
           <li>Secure payment options</li>
         </ul>
-      </div>
-    </section>
+      </section>
 
-    <section class="products">
-      <div class="container">
+      <section class="products">
+        <div class="container">
           <h2>Shop Our Collection</h2>
           <div class="row">
-              {% for item in random_images %}
-              <div class="col-md-3">
-                  <div class="card">
-                      <img src="data:image/png;base64,{{ item.image_base64 }}" alt="Clothing item" class="card-img-top">
-                      <div class="card-body">
-                          <h3>{{ item.name }}</h3>
-                          <p>${{ item.price }}</p>
-                      </div>
-                  </div>
+            {% for item in random_images %}
+            <div class="col-md-3">
+              <div class="card">
+                <img
+                  src="data:image/png;base64,{{ item.image_base64 }}"
+                  alt="Clothing item"
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h3>{{ item.name }}</h3>
+                  <p>${{ item.price }}</p>
+                </div>
               </div>
-              {% endfor %}
-              <!-- (Add other product cards with col-md-3) -->
-              
+            </div>
+            {% endfor %}
+            <!-- (Add other product cards with col-md-3) -->
           </div>
-      </div>
-  </section>
-  
+        </div>
+      </section>
 
       <section class="community">
         <div class="container">
-        <h2>Join Our Community</h2>
-        <div class="row">
-          <div class="col-md-4 mb-4">
+          <h2>Join Our Community</h2>
+          <div class="row">
+            <div class="col-md-4 mb-4">
               <div class="card">
-                  <img src="https://via.placeholder.com/400x500" class="card-img-top" alt="Outfit 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Outfit 1</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#outfit1Modal">View</button>
-                          <div>
-                              <span class="mr-2">Rating:</span>
-                              <span class="badge badge-success">4.5</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4 mb-4">
-              <div class="card">
-                  <img src="https://via.placeholder.com/400x500" class="card-img-top" alt="Outfit 2">
-                  <div class="card-body">
-                      <h5 class="card-title">Outfit 2</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                          <button type="button" class="
-                          btn btn-primary" data-toggle="modal" data-target="#outfit2Modal">View</button>
-                          <div>
-                              <span class="mr-2">Rating:</span>
-                              <span class="badge badge-success">4.0</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        
-          <!-- Add more outfit cards here -->
-          <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://via.placeholder.com/400x500" class="card-img-top" alt="Outfit 3">
+                <img
+                  src="https://via.placeholder.com/400x500"
+                  class="card-img-top"
+                  alt="Outfit 1"
+                />
                 <div class="card-body">
-                    <h5 class="card-title">Outfit 3</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <button type="button" class="
-                        btn btn-primary" data-toggle="modal" data-target="#outfit3Modal">View</button>
-                        <div>
-                            <span class="mr-2">Rating:</span>
-                            <span class="badge badge-success">4.0</span>
-                        </div>
+                  <h5 class="card-title">Outfit 1</h5>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#outfit1Modal"
+                    >
+                      View
+                    </button>
+                    <div>
+                      <span class="mr-2">Rating:</span>
+                      <span class="badge badge-success">4.5</span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img
+                  src="https://via.placeholder.com/400x500"
+                  class="card-img-top"
+                  alt="Outfit 2"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Outfit 2</h5>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#outfit2Modal"
+                    >
+                      View
+                    </button>
+                    <div>
+                      <span class="mr-2">Rating:</span>
+                      <span class="badge badge-success">4.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more outfit cards here -->
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img
+                  src="https://via.placeholder.com/400x500"
+                  class="card-img-top"
+                  alt="Outfit 3"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Outfit 3</h5>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#outfit3Modal"
+                    >
+                      View
+                    </button>
+                    <div>
+                      <span class="mr-2">Rating:</span>
+                      <span class="badge badge-success">4.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
       </section>
     </main>
-<!-- Outfit modals -->
-<div class="modal fade" id="outfit1Modal" tabindex="-1" role="dialog" aria-labelledby="outfit1ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
+    <!-- Outfit modals -->
+    <div
+      class="modal fade"
+      id="outfit1Modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="outfit1ModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="outfit1ModalLabel">Outfit 1</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+            <h5 class="modal-title" id="outfit1ModalLabel">Outfit 1</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body">
-              <img src="https://via.placeholder.com/800x1000" alt="Outfit 1" class="img-fluid">
+            <img
+              src="https://via.placeholder.com/800x1000"
+              alt="Outfit 1"
+              class="img-fluid"
+            />
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save to My Outfits</button>
-              <div class="d-flex align-items-center">
-                  <span class="mr-2">Rate:</span>
-                  <div class="rating">
-                      <input type="radio" name="rating1" id="rating1-5">
-                      <label for="rating1-5"></label>
-                      <input type="radio" name="rating1" id="rating1-4">
-                      <label for="rating1-4"></label>
-                      <input type="radio" name="rating1" id="rating1-3">
-                      <label for="rating1-3"></label>
-                      <input type="radio" name="rating1" id="rating1-2">
-                      <label for="rating1-2"></label>
-                      <input type="radio" name="rating1" id="rating1-1">
-                      <label for="rating1-1"></label>
-                  </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">
+              Save to My Outfits
+            </button>
+            <div class="d-flex align-items-center">
+              <span class="mr-2">Rate:</span>
+              <div class="rating">
+                <input type="radio" name="rating1" id="rating1-5" />
+                <label for="rating1-5"></label>
+                <input type="radio" name="rating1" id="rating1-4" />
+                <label for="rating1-4"></label>
+                <input type="radio" name="rating1" id="rating1-3" />
+                <label for="rating1-3"></label>
+                <input type="radio" name="rating1" id="rating1-2" />
+                <label for="rating1-2"></label>
+                <input type="radio" name="rating1" id="rating1-1" />
+                <label for="rating1-1"></label>
               </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<div class="modal fade" id="outfit2Modal" tabindex="-1" role="dialog" aria-labelledby="outfit2ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
+    <div
+      class="modal fade"
+      id="outfit2Modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="outfit2ModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="outfit2ModalLabel">Outfit 2</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+            <h5 class="modal-title" id="outfit2ModalLabel">Outfit 2</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body">
-              <img src="https://via.placeholder.com/800x1000" alt="Outfit 2" class="img-fluid">
+            <img
+              src="https://via.placeholder.com/800x1000"
+              alt="Outfit 2"
+              class="img-fluid"
+            />
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save to My Outfits</button>
-              <div class="d-flexalign-items-center">
-                  <span class="mr-2">Rate:</span>
-                  <div class="rating">
-                      <input type="radio" name="rating2" id="rating2-5">
-                      <label for="rating2-5"></label>
-                      <input type="radio" name="rating2" id="rating2-4">
-                      <label for="rating2-4"></label>
-                      <input type="radio" name="rating2" id="rating2-3">
-                      <label for="rating2-3"></label>
-                      <input type="radio" name="rating2" id="rating2-2">
-                      <label for="rating2-2"></label>
-                      <input type="radio" name="rating2" id="rating2-1">
-                      <label for="rating2-1"></label>
-                  </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">
+              Save to My Outfits
+            </button>
+            <div class="d-flexalign-items-center">
+              <span class="mr-2">Rate:</span>
+              <div class="rating">
+                <input type="radio" name="rating2" id="rating2-5" />
+                <label for="rating2-5"></label>
+                <input type="radio" name="rating2" id="rating2-4" />
+                <label for="rating2-4"></label>
+                <input type="radio" name="rating2" id="rating2-3" />
+                <label for="rating2-3"></label>
+                <input type="radio" name="rating2" id="rating2-2" />
+                <label for="rating2-2"></label>
+                <input type="radio" name="rating2" id="rating2-1" />
+                <label for="rating2-1"></label>
               </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-  <!-- JavaScript dependencies -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <!-- JavaScript dependencies -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
