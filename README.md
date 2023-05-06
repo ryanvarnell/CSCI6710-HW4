@@ -25,7 +25,7 @@ them a better idea of how all the pieces would work together.
 <div class="profile">
     <div class="image-container">
         <a href="https://www.linkedin.com/in/ev-brown-cs-it/">
-            <img src="static/img/about/about_page_evan.png" alt="Evan Brown">
+            <img src="source/images/evan.png" alt="Evan Brown">
         </a>
     </div>
     <div class="name-container">
@@ -39,7 +39,7 @@ them a better idea of how all the pieces would work together.
 <div class="profile">
     <div class="image-container">
         <a href="https://www.linkedin.com/in/ryanvarnell/">
-            <img src="static/img/about/about_page_ryan.png" alt="Ryan Varnell">
+            <img src="source/images/ryan.png" alt="Ryan Varnell">
         </a>
     </div>
     <div class="name-container">
@@ -52,7 +52,7 @@ them a better idea of how all the pieces would work together.
 
 <div class="profile">
     <div class="image-container">
-        <a href="https://www.linkedin.com/in/cris-zbavitel/">
+        <a href="source/images/cris.png">
             <img src="static/img/about/about_page_cris.jpg" alt="Cris Zbavitel">
         </a>
     </div>
@@ -66,55 +66,3 @@ them a better idea of how all the pieces would work together.
 </section>
 
 <img id="site-image" src="source/images/site-image.png" alt="Website in a desktop web browser.">
-
-<style>
-    #tech-stack a {
-        padding: 5px;
-        margin: auto;
-        text-align: center;
-    }
-
-    #profiles {
-        width: 65%;
-        float: left;
-        align-items: center;
-    }
-
-    .profile {
-        display: inline-flex;
-        flex-direction: column;
-        width: 32%;
-        min-width: 160px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .profile img {
-        height: 120px;
-        width: 120px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-
-    .profile .name-container {
-        font-size: 25px;
-        font-weight: bold;;
-        margin-top: -10px;
-    }
-
-    .profile .email-container {
-        margin-top: -30px;
-    }
-
-    #mobile-site-image {
-        width: 35%;
-        float: right;
-        display: inline-block;
-    }
-
-    #site-image {
-        align-self: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
