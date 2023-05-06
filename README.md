@@ -23,17 +23,17 @@ them a better idea of how all the pieces would work together.
 
 <table>
 <tr>
-    <td>
+    <td align="center">
     <a href="https://www.linkedin.com/in/ev-brown-cs-it/">
         <img src="source/images/evan.png" alt="Evan Brown">
     </a>
     </td>
-    <td>
+    <td align="center">
     <a href="https://www.linkedin.com/in/ryanvarnell/">
         <img src="source/images/ryan.png" alt="Ryan Varnell">
     </a>
     </td>
-    <td>
+    <td align="center">
     <a href="https://www.linkedin.com/in/cris-zbavitel/">
         <img src="source/images/cris.png" alt="Cris Zbavitel">
     </a>
@@ -62,5 +62,7 @@ them a better idea of how all the pieces would work together.
     </td>
 </tr>
 </table>
+
+###
 
 <img id="site-image" src="source/images/site-image.png" alt="Website in a desktop web browser.">
