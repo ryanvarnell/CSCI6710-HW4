@@ -63,6 +63,6 @@ them a better idea of how all the pieces would work together.
 </tr>
 </table>
 
-###
+#
 
 <img id="site-image" src="source/images/site-image.png" alt="Website in a desktop web browser.">
