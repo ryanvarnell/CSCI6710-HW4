@@ -52,8 +52,8 @@ them a better idea of how all the pieces would work together.
 
 <div class="profile">
     <div class="image-container">
-        <a href="source/images/cris.png">
-            <img src="static/img/about/about_page_cris.jpg" alt="Cris Zbavitel">
+        <a href="https://www.linkedin.com/in/cris-zbavitel/">
+            <img src="source/images/cris.png" alt="Cris Zbavitel">
         </a>
     </div>
     <div class="name-container">
