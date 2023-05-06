@@ -1,6 +1,6 @@
 # The Clothing Carousel
 
-<img id="mobile-site-image" src="source/images/site-image-mobile.png" alt="Mobile view of website.">
+<img id="mobile-site-image" align="right" src="source/images/site-image-mobile.png" alt="Mobile view of website.">
 
 This was our group's final project for **CSCI 4710/6710 - Web Applications**. The idea of this website was to have a place
 where users could build outfits using a carousel-style selection interface for individual pieces of clothing, giving
@@ -21,48 +21,46 @@ them a better idea of how all the pieces would work together.
 
 ## Team
 
-<section id="profiles">
-<div class="profile">
-    <div class="image-container">
-        <a href="https://www.linkedin.com/in/ev-brown-cs-it/">
-            <img src="source/images/evan.png" alt="Evan Brown">
-        </a>
-    </div>
-    <div class="name-container">
-        <p class="name"><a href="https://www.linkedin.com/in/ev-brown-cs-it/">Evan Brown</a></p>
-    </div>
-    <div class="email-container">
-        <p class="email"><a href="mailto:evbrown1200@gmail.com">evbrown1200@gmail.com</a></p>
-    </div>
-</div>
-
-<div class="profile">
-    <div class="image-container">
-        <a href="https://www.linkedin.com/in/ryanvarnell/">
-            <img src="source/images/ryan.png" alt="Ryan Varnell">
-        </a>
-    </div>
-    <div class="name-container">
-        <p class="name"><a href="https://www.linkedin.com/in/ryanvarnell/">Ryan Varnell</a></p>
-    </div>
-    <div class="email-container">
-        <p class="email"><a href="mailto:mail@ryanvarnell.com">mail@ryanvarnell.com</a></p>
-    </div>
-</div>
-
-<div class="profile">
-    <div class="image-container">
-        <a href="https://www.linkedin.com/in/cris-zbavitel/">
-            <img src="source/images/cris.png" alt="Cris Zbavitel">
-        </a>
-    </div>
-    <div class="name-container">
-        <p class="name"><a href="https://www.linkedin.com/in/cris-zbavitel/">Cris Zbavitel</a></p>
-    </div>
-    <div class="email-container">
-        <p class="email"><a href="mailto:criszbav@gmail.com">criszbav@gmail.com</a></p>
-    </div>
-</div>
-</section>
+<table>
+<tr>
+    <td>
+    <a href="https://www.linkedin.com/in/ev-brown-cs-it/">
+        <img src="source/images/evan.png" alt="Evan Brown">
+    </a>
+    </td>
+    <td>
+    <a href="https://www.linkedin.com/in/ryanvarnell/">
+        <img src="source/images/ryan.png" alt="Ryan Varnell">
+    </a>
+    </td>
+    <td>
+    <a href="https://www.linkedin.com/in/cris-zbavitel/">
+        <img src="source/images/cris.png" alt="Cris Zbavitel">
+    </a>
+    </td>
+</tr>
+<tr>
+    <td>
+    <p align="center"><a href="https://www.linkedin.com/in/ev-brown-cs-it/">Evan Brown</a></p>
+    </td>
+    <td>
+    <p align="center"><a href="https://www.linkedin.com/in/ryanvarnell/">Ryan Varnell</a></p>
+    </td>
+    <td>
+    <p align="center"><a href="https://www.linkedin.com/in/cris-zbavitel/">Cris Zbavitel</a></p>
+    </td>
+</tr>
+<tr>
+    <td>
+    <p align="center"><a href="mailto:evbrown1200@gmail.com">evbrown1200@gmail.com</a></p>
+    </td>
+    <td>
+    <p align="center"><a href="mailto:mail@ryanvarnell.com">mail@ryanvarnell.com</a></p>
+    </td>
+    <td>
+    <p align="center"><a href="mailto:criszbav@gmail.com">criszbav@gmail.com</a></p>
+    </td>
+</tr>
+</table>
 
 <img id="site-image" src="source/images/site-image.png" alt="Website in a desktop web browser.">
