@@ -15,6 +15,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/login.css') }}"
     />
     <script
@@ -80,7 +84,7 @@
     </header>
 
     <main>
-      <h1><br /><br /><br /></h1>
+      <h1><br /><br /></h1>
       <section class="input">
         <h3>Login Status: {{Check}}</h3>
         <form method="POST" action="{{ url_for('login') }}">

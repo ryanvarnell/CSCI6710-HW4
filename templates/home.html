@@ -15,6 +15,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/home.css') }}"
     />
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
@@ -87,14 +91,26 @@
       </section>
 
       <section class="features">
-        <h2>Features</h2>
-        <ul>
-          <li>User-friendly outfit creation tool</li>
-          <li>Wide selection of clothing options</li>
-          <li>Shareable user-created outfits in the community page</li>
-          <li>Easy returns and exchanges</li>
-          <li>Secure payment options</li>
-        </ul>
+        <div class="features-list">
+          <ul>
+            <li>User-friendly outfit creation tool</li>
+          </ul>
+        </div>
+        <div class="features-list">
+          <ul>
+            <li>Wide selection of clothing options</li>
+          </ul>
+        </div>
+        <div class="features-list">
+          <ul>
+            <li>Easy returns and exchanges</li>
+          </ul>
+        </div>
+        <div class="features-list">
+          <ul>
+            <li>Secure payment options</li>
+          </ul>
+        </div>
       </section>
 
       <section class="products">

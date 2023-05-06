@@ -12,6 +12,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/about.css') }}"
     />
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
@@ -41,7 +45,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('home') }}">Home</a>
             </li>
-            <li class="nav-item about">
+            <li class="nav-item current">
               <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
             <li class="nav-item">
