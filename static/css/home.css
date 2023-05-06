@@ -84,10 +84,14 @@
 
 .card-body {
   padding: 1.5rem;
+  max-height: 200px;
+  display: block;
+  text-align: center;
 }
 
 .card-title {
   font-weight: bold;
+  font-size: small;
   margin-bottom: 0.5rem;
 }
 
